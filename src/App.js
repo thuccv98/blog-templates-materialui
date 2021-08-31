@@ -1,9 +1,23 @@
-import { Container, createTheme, Grid, ThemeProvider } from '@material-ui/core';
+import {
+  Container,
+  createTheme,
+  Grid,
+  makeStyles,
+  ThemeProvider,
+} from '@material-ui/core';
 import './App.css';
 import FeaturedPost from './components/FeaturedPost';
 import Header from './components/Header';
+import Main from './components/Main';
 import PostCard from './components/PostCard';
-import { featuredPosts } from './data/Data';
+import Sidebar from './components/Sidebar';
+import { featuredPosts, sidebar } from './data/Data';
+
+const useStyles = makeStyles((theme) => ({
+  mainGrid: {
+    marginTop: theme.spacing(3),
+  },
+}));
 
 function App() {
   const darkTheme = createTheme({
@@ -11,6 +25,8 @@ function App() {
       type: 'dark',
     },
   });
+
+  const classes = useStyles();
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -22,6 +38,15 @@ function App() {
           {featuredPosts.map((post) => (
             <PostCard post={post} key={post.title} />
           ))}
+        </Grid>
+        <Grid container spacing={5} className={classes.mainGrid}>
+          <Main title="From the Firehose" />
+          <Sidebar
+            title={sidebar.title}
+            description={sidebar.description}
+            archives={sidebar.archives}
+            social={sidebar.social}
+          />
         </Grid>
       </Container>
     </ThemeProvider>
