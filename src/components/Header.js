@@ -9,6 +9,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SideDrawer from './SideDrawer';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -28,9 +29,11 @@ const Header = () => {
   return (
     <>
       <Toolbar>
-        <IconButton color="inherit">
-          <MenuIcon />
-        </IconButton>
+        <SideDrawer>
+          <IconButton color="inherit">
+            <MenuIcon />
+          </IconButton>
+        </SideDrawer>
         <Typography variant="h5" className={classes.title}>
           Blogginf Website
         </Typography>
